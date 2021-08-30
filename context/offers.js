@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 const OffertsContext = React.createContext({});
 
-export const OffersProvider = ({ children }) => {
-    const [offers, setOffers] = useState([]);
+export const OffersProvider = ({ children, list }) => {
+    const [offers, setOffers] = useState(list);
 
     return (
         <OffertsContext.Provider value={{ offers, setOffers }}>

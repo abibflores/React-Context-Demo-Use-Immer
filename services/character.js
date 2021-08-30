@@ -7,9 +7,7 @@ const getCharacters = async () => {
             "https://rickandmortyapi.com/api/character",
         );
 
-        if (resp.status === 200) {
-            return { ...resp.data.results };
-        }
+        if (resp.status === 200) return resp.data.results;
     } catch (err) {
         console.error("error: ", err);
     }

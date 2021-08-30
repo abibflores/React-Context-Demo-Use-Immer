@@ -9,7 +9,9 @@ import Venues from "../components/Venues";
 import Offers from "../components/Oferts";
 import Transactions from "../components/Transactions";
 
-const Home = () => (
+import getCharacters from "../services/character";
+
+const Home = ({ offers }) => (
     <div className="Container">
         <BusinessProvider>
             <Bunisses className="Business">
@@ -21,7 +23,7 @@ const Home = () => (
                 venues
             </Venues>
         </VenuesProvider>
-        <OffersProvider>
+        <OffersProvider list={offers}>
             <Offers className="Oferts">
                 oferts
             </Offers>
@@ -33,5 +35,14 @@ const Home = () => (
         </TransactionsProvider>
     </div>
 );
+
+export async function getServerSideProps() {
+    const offers = await getCharacters();
+    return {
+        props: {
+            offers,
+        },
+    };
+}
 
 export default Home;
