@@ -7,10 +7,16 @@ const Offers = ({ children }) => {
     console.log("OffersContextProvider", OfertsContext);
     const { offers, setOffers } = OfertsContext;
     console.log(offers, "offers");
+
+    const newOffer = () => {
+        setOffers((draft) => {
+            draft[0].origin.name = "Earth (C-555)";
+        });
+    };
     return (
         <div>
             {children}
-            <button type="button" onClick={() => setOffers([{ ofertId: 1 }])}>
+            <button type="button" onClick={() => newOffer()}>
                 nueva oferta 10
             </button>
         </div>
